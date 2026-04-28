@@ -1,5 +1,5 @@
 // Generado automáticamente desde Supabase. No editar a mano.
-// Regenerar con: pnpm supabase:types (o desde el MCP de Supabase).
+// Regenerar tras cambios de schema (vía MCP de Supabase).
 
 export type Json =
   | string
@@ -89,6 +89,108 @@ export type Database = {
         }
         Relationships: []
       }
+      competitors: {
+        Row: {
+          created_at: string
+          display_order: number
+          id: string
+          is_active: boolean
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          display_order: number
+          id?: string
+          is_active?: boolean
+          name: string
+        }
+        Update: {
+          created_at?: string
+          display_order?: number
+          id?: string
+          is_active?: boolean
+          name?: string
+        }
+        Relationships: []
+      }
+      leads: {
+        Row: {
+          assigned_agent_id: string
+          average_ticket: number
+          business_sector_id: string
+          contact_email: string
+          contact_name: string | null
+          contact_phone: string
+          created_at: string
+          entity_type: Database["public"]["Enums"]["entity_type"]
+          id: string
+          monthly_volume_projection: number
+          notes: string | null
+          product_interest: Database["public"]["Enums"]["product_interest"]
+          razon_social: string
+          source: string
+          status_tarjeta: Database["public"]["Enums"]["tarjeta_status"] | null
+          status_tpv: Database["public"]["Enums"]["tpv_status"] | null
+          tpv_modality: Database["public"]["Enums"]["tpv_modality"] | null
+          updated_at: string
+        }
+        Insert: {
+          assigned_agent_id: string
+          average_ticket: number
+          business_sector_id: string
+          contact_email: string
+          contact_name?: string | null
+          contact_phone: string
+          created_at?: string
+          entity_type: Database["public"]["Enums"]["entity_type"]
+          id?: string
+          monthly_volume_projection: number
+          notes?: string | null
+          product_interest: Database["public"]["Enums"]["product_interest"]
+          razon_social: string
+          source?: string
+          status_tarjeta?: Database["public"]["Enums"]["tarjeta_status"] | null
+          status_tpv?: Database["public"]["Enums"]["tpv_status"] | null
+          tpv_modality?: Database["public"]["Enums"]["tpv_modality"] | null
+          updated_at?: string
+        }
+        Update: {
+          assigned_agent_id?: string
+          average_ticket?: number
+          business_sector_id?: string
+          contact_email?: string
+          contact_name?: string | null
+          contact_phone?: string
+          created_at?: string
+          entity_type?: Database["public"]["Enums"]["entity_type"]
+          id?: string
+          monthly_volume_projection?: number
+          notes?: string | null
+          product_interest?: Database["public"]["Enums"]["product_interest"]
+          razon_social?: string
+          source?: string
+          status_tarjeta?: Database["public"]["Enums"]["tarjeta_status"] | null
+          status_tpv?: Database["public"]["Enums"]["tpv_status"] | null
+          tpv_modality?: Database["public"]["Enums"]["tpv_modality"] | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "leads_assigned_agent_id_fkey"
+            columns: ["assigned_agent_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "leads_business_sector_id_fkey"
+            columns: ["business_sector_id"]
+            isOneToOne: false
+            referencedRelation: "business_sectors"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       msi_rates: {
         Row: {
           id: string
@@ -173,6 +275,116 @@ export type Database = {
         }
         Relationships: []
       }
+      quotes: {
+        Row: {
+          annual_savings: number
+          commission_tier_applied: number
+          competitor_id: string
+          competitor_rate_credito: number
+          competitor_rate_debito: number
+          created_at: string
+          generated_by: string
+          id: string
+          lead_id: string
+          monthly_savings: number
+          msi_config: Json
+          pdf_url: string | null
+          projected_monthly_commission: number
+          projected_weighted_utility: number
+          rate_amex: number
+          rate_credito: number
+          rate_debito: number
+          rate_international: number
+          savings_pct: number
+          terminal_id: string
+          terminal_modality: Database["public"]["Enums"]["terminal_modality"]
+          terminal_quantity: number
+          updated_at: string
+          valid_until: string
+        }
+        Insert: {
+          annual_savings: number
+          commission_tier_applied: number
+          competitor_id: string
+          competitor_rate_credito: number
+          competitor_rate_debito: number
+          created_at?: string
+          generated_by: string
+          id?: string
+          lead_id: string
+          monthly_savings: number
+          msi_config?: Json
+          pdf_url?: string | null
+          projected_monthly_commission: number
+          projected_weighted_utility: number
+          rate_amex: number
+          rate_credito: number
+          rate_debito: number
+          rate_international: number
+          savings_pct: number
+          terminal_id: string
+          terminal_modality: Database["public"]["Enums"]["terminal_modality"]
+          terminal_quantity: number
+          updated_at?: string
+          valid_until?: string
+        }
+        Update: {
+          annual_savings?: number
+          commission_tier_applied?: number
+          competitor_id?: string
+          competitor_rate_credito?: number
+          competitor_rate_debito?: number
+          created_at?: string
+          generated_by?: string
+          id?: string
+          lead_id?: string
+          monthly_savings?: number
+          msi_config?: Json
+          pdf_url?: string | null
+          projected_monthly_commission?: number
+          projected_weighted_utility?: number
+          rate_amex?: number
+          rate_credito?: number
+          rate_debito?: number
+          rate_international?: number
+          savings_pct?: number
+          terminal_id?: string
+          terminal_modality?: Database["public"]["Enums"]["terminal_modality"]
+          terminal_quantity?: number
+          updated_at?: string
+          valid_until?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quotes_competitor_id_fkey"
+            columns: ["competitor_id"]
+            isOneToOne: false
+            referencedRelation: "competitors"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quotes_generated_by_fkey"
+            columns: ["generated_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quotes_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quotes_terminal_id_fkey"
+            columns: ["terminal_id"]
+            isOneToOne: false
+            referencedRelation: "terminals"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       terminals: {
         Row: {
           created_at: string
@@ -223,7 +435,38 @@ export type Database = {
       }
     }
     Enums: {
+      entity_type: "fisica" | "moral"
       msi_issuer: "prosa" | "banamex" | "bbva"
+      product_interest: "tpv" | "tarjeta" | "ambos"
+      tarjeta_status:
+        | "en_alta"
+        | "subiendo_docs"
+        | "docs_completos"
+        | "en_revision_onboarding"
+        | "correcciones"
+        | "aprobado_onboarding"
+        | "enviado_cumplimiento"
+        | "speiout_habilitado"
+        | "contratos_firmados"
+        | "tarjetas_solicitadas"
+        | "tarjetas_entregadas"
+        | "facturado"
+        | "activo"
+        | "rechazado"
+      terminal_modality: "comodato" | "renta"
+      tpv_modality: "tarjeta_presente" | "e_commerce" | "ambas"
+      tpv_status:
+        | "cotizacion_enviada"
+        | "en_alta"
+        | "en_validacion"
+        | "en_revision"
+        | "pending_corrections"
+        | "aprobado"
+        | "contrato_firmado"
+        | "afiliacion_kushki"
+        | "entrega"
+        | "activo"
+        | "rechazado"
       user_role:
         | "admin"
         | "director_comercial"
@@ -357,7 +600,40 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      entity_type: ["fisica", "moral"],
       msi_issuer: ["prosa", "banamex", "bbva"],
+      product_interest: ["tpv", "tarjeta", "ambos"],
+      tarjeta_status: [
+        "en_alta",
+        "subiendo_docs",
+        "docs_completos",
+        "en_revision_onboarding",
+        "correcciones",
+        "aprobado_onboarding",
+        "enviado_cumplimiento",
+        "speiout_habilitado",
+        "contratos_firmados",
+        "tarjetas_solicitadas",
+        "tarjetas_entregadas",
+        "facturado",
+        "activo",
+        "rechazado",
+      ],
+      terminal_modality: ["comodato", "renta"],
+      tpv_modality: ["tarjeta_presente", "e_commerce", "ambas"],
+      tpv_status: [
+        "cotizacion_enviada",
+        "en_alta",
+        "en_validacion",
+        "en_revision",
+        "pending_corrections",
+        "aprobado",
+        "contrato_firmado",
+        "afiliacion_kushki",
+        "entrega",
+        "activo",
+        "rechazado",
+      ],
       user_role: [
         "admin",
         "director_comercial",
