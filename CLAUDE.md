@@ -3,7 +3,7 @@
 # Payefy Panel — notas para futuras sesiones
 
 ## Qué es
-Panel interno + portal cliente para alta KYC de TPV y Tarjetas Payefy. Reconstruido desde cero (reemplaza `payefy-merchant-nexus`). Documento de arquitectura completo: `~/Desktop/payefy-arquitectura.md`.
+Panel interno + portal cliente para alta KYC de TPV y Tarjetas Payefy. Reconstruido desde cero (reemplaza `payefy-merchant-nexus`). Documento de arquitectura completo: `./payefy-arquitectura.md` (en la raíz del repo).
 
 ## Stack
 Next.js 16 App Router + TS + pnpm · Supabase (auth/db/storage) · shadcn/ui + Tailwind 4 · RHF + Zod · @dnd-kit · @react-pdf/renderer · Resend · Vercel.
